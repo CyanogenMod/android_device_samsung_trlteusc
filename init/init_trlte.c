@@ -55,19 +55,19 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     property_get("ro.bootloader", bootloader);
 
     if (strstr(bootloader, "N910R4")) {
-        /* trlteusc These values are taken from spr and edited for the 910R4 FIXME */
+        /* trlteusc */
         property_set("ro.build.fingerprint", "samsung/trlteusc/trlteusc:4.4.4/KTU84P/N910R4VPU1ANIE:user/release-keys");
         property_set("ro.build.description", "trlteusc-user 4.4.4 KTU84P N910R4UVU1ANIH release-keys");
         property_set("ro.product.model", "SM-N910R4");
         property_set("ro.product.device", "trlteusc");
-        gsm_properties();
+        cdma_properties("0", "311580", "U.S.Cellular");
     } else {
         /* trltespr */
         property_set("ro.build.fingerprint", "samsung/trltespr/trltespr:4.4.4/KTU84P/N910PVPU1ANIE:user/release-keys");
         property_set("ro.build.description", "trltespr-user 4.4.4 KTU84P N910PVPU1ANIE release-keys");
         property_set("ro.product.model", "SM-N910P");
         property_set("ro.product.device", "trltespr");
-        gsm_properties();
+        cdma_properties("1", "310120", "Sprint");
     }
 
     property_get("ro.product.device", device);
@@ -75,7 +75,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     INFO("Found bootloader id %s setting build properties for %s device\n", bootloader, devicename);
 }
 
-void gsm_properties()
+void cdma_properties()
 {
     property_set("telephony.lteOnCdmaDevice", "1");
     property_set("ro.telephony.default_network", "10");
