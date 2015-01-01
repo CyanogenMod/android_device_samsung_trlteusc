@@ -1,6 +1,5 @@
 /*
    Copyright (c) 2013, The Linux Foundation. All rights reserved.
-
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
    met:
@@ -13,7 +12,6 @@
     * Neither the name of The Linux Foundation nor the names of its
       contributors may be used to endorse or promote products derived
       from this software without specific prior written permission.
-
    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
@@ -63,8 +61,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         cdma_properties("0", "311580", "U.S.Cellular");
     } else {
         /* trltespr */
-        property_set("ro.build.fingerprint", "samsung/trltespr/trltespr:4.4.4/KTU84P/N910PVPU1ANIE:user/release-keys");
-        property_set("ro.build.description", "trltespr-user 4.4.4 KTU84P N910PVPU1ANIE release-keys");
+        property_set("ro.build.fingerprint", "samsung/trltespr/trltespr:4.4.4/KTU84P/N910PVPU1ANK2:user/release-keys");
+        property_set("ro.build.description", "trltespr-user 4.4.4 KTU84P N910PVPU1ANK2 release-keys");
         property_set("ro.product.model", "SM-N910P");
         property_set("ro.product.device", "trltespr");
         cdma_properties("1", "310120", "Sprint");
@@ -75,9 +73,12 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     INFO("Found bootloader id %s setting build properties for %s device\n", bootloader, devicename);
 }
 
-void cdma_properties()
+void cdma_properties(char cdma_sub[], char op_numeric[], char op_alpha[])
 {
-    property_set("telephony.lteOnCdmaDevice", "1");
-    property_set("ro.telephony.default_network", "10");
     property_set("ril.subscription.types", "NV,RUIM");
+    property_set("ro.cdma.home.operator.numeric", op_numeric);
+    property_set("ro.cdma.home.operator.alpha", op_alpha);
+    property_set("ro.telephony.default_cdma_sub", cdma_sub);
+    property_set("ro.telephony.default_network", "10");
+    property_set("telephony.lteOnCdmaDevice", "1");
 }
