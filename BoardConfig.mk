@@ -18,15 +18,15 @@
 TARGET_OTA_ASSERT_DEVICE := trltespr,trlteusc,SM-N910P,SM-N910R4
 
 # Kernel
-TARGET_KERNEL_VARIANT_CONFIG := apq8084_sec_trlte_spr_defconfig
+TARGET_KERNEL_VARIANT_CONFIG := apq8084_sec_trlte_usc_defconfig
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := device/samsung/trltespr/init/init_trlte.c
+TARGET_LIBINIT_DEFINES_FILE := device/samsung/trlteusc/init/init_trlte.c
 TARGET_UNIFIED_DEVICE := true
 
 # Radio
-BOARD_RIL_CLASS := ../../../device/samsung/trltespr/ril
+BOARD_RIL_CLASS := ../../../device/samsung/trlteusc/ril
 
 # inherit from the proprietary version
--include vendor/samsung/trltespr/BoardConfigVendor.mk
+-include vendor/samsung/trlteusc/BoardConfigVendor.mk

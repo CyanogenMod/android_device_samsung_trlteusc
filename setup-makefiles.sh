@@ -3,5 +3,5 @@
 set -e
 
 export VENDOR=samsung
-export DEVICE=trltespr
+export DEVICE=trlteusc
 ./../../$VENDOR/trlte-common/setup-makefiles.sh $@
